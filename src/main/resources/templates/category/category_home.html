@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Categories</title>
+    <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css"/>
 </head>
 <body>
+<div th:replace="partial/header"></div>
     <main>
-        <div>
-            <table>
+        <div class="container">
+            <div class="text-end">
+                <button class="btn btn-lg btn-primary">Add a category</button>
+            </div>
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -23,5 +28,6 @@
             </table>
         </div>
     </main>
+    <script src="/style/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

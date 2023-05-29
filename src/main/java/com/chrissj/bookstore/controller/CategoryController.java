@@ -24,18 +24,18 @@ public class CategoryController {
     public String categoryHome(Model model){
         List<Category> categories = categoryService.getAll();
         model.addAttribute("categories", categories);
-        return "category/category-home";
+        return "category_home";
     }
 
     @GetMapping("/add")
     public String addCategory(Model model){
-        return "category/category-add";
+        return "category_add";
     }
 
     @PostMapping("/add")
     public String add(@RequestParam(name = "name") String name){
         if(name.isBlank()){
-            return "category/category-add";
+            return "category_add";
         }
         try{
             Category category = new Category(name);
