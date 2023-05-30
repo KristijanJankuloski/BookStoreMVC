@@ -5,7 +5,9 @@ import com.chrissj.bookstore.service.PublisherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -23,5 +25,25 @@ public class PublisherController {
         List<Publisher> publishers = publisherService.getAll();
         model.addAttribute("publishers", publishers);
         return "publisher/publisher_home";
+    }
+
+    @GetMapping("/add")
+    public String addPublisher(Model model){
+        return "publisher/publisher_add";
+    }
+
+    @PostMapping("/add")
+    public String addPublisherPost(@RequestParam(name = "name") String name,
+                                   @RequestParam(name = "address") String address){
+        if(name.isEmpty() || address.isEmpty()){
+            return "publisher/publisher_add";
+        }
+        try {
+            publisherService.add(name.trim().toLowerCase(), address.trim().toLowerCase());
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return "redirect:/admin/publisher";
     }
 }

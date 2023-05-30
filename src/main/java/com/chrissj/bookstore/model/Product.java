@@ -1,8 +1,13 @@
 package com.chrissj.bookstore.model;
 
 import jakarta.persistence.*;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.lang.NonNull;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +28,15 @@ public class Product {
     private Publisher publisher;
     @ManyToMany
     private List<Author> authors;
+    private String imagePath;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public Product(@NonNull String name, @NonNull Float price, Category category, @NonNull Publisher publisher, List<Author> authors) {
         this.name = name;
@@ -93,5 +107,14 @@ public class Product {
 
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
+    }
+
+    public Resource getImage() throws IOException {
+        if (this.imagePath.isEmpty()){
+            return null;
+        }
+        Resource resource = new FileSystemResource(this.imagePath);
+        return resource;
+//        return Files.readAllBytes(new File(this.imagePath).toPath());
     }
 }

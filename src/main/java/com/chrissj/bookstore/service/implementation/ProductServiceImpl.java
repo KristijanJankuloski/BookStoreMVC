@@ -8,13 +8,16 @@ import com.chrissj.bookstore.model.exception.NoProductFoundException;
 import com.chrissj.bookstore.repository.ProductRepository;
 import com.chrissj.bookstore.service.ProductService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final String FOLDER_PATH = "D:\\Projects\\Book_store\\upload\\products\\";
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -39,6 +42,19 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product add(String name, Float price, Category category, Publisher publisher, Author author) {
         Product product = new Product(name, price, category, publisher, author);
+        return productRepository.save(product);
+    }
+
+    @Override
+    public Product add(String name, Float price, Category category, Publisher publisher, Author author, MultipartFile image) {
+        Product product = new Product(name, price, category, publisher, author);
+        String filePath = this.FOLDER_PATH + image.getOriginalFilename();
+        product.setImagePath(filePath);
+        try {
+            image.transferTo(new File(filePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return productRepository.save(product);
     }
 

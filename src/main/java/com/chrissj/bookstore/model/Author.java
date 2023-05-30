@@ -25,6 +25,18 @@ public class Author {
     public String getFullName() {
         return fullName;
     }
+    public String getNameCapitalized(){
+        var nameSplit= fullName.split(" ");
+        var displayName = new StringBuilder();
+        for (var word:nameSplit) {
+            if(!word.isEmpty()){
+               char firstLetter = Character.toUpperCase(word.charAt(0));
+               String capitalizedWord = firstLetter + word.substring(1);
+               displayName.append(capitalizedWord).append(" ");
+            }
+        }
+        return displayName.toString().trim();
+    }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;

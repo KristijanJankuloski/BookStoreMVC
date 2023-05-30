@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+  <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div th:replace="~{partial/header}"></div>
+<main>
+  <div class="container">
+    <div class="text-end mt-3">
+      <a href="/admin/product/add" class="btn btn-lg btn-success">Add a product</a>
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Author</th>
+        <th>Publisher</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="book : ${products}">
+        <td th:text="${book.getId()}"></td>
+        <td th:text="${book.getName()}"></td>
+        <td th:text="${book.getPrice()}"></td>
+        <td th:text="${book.getAuthors().get(0).getNameCapitalized()}"></td>
+        <td th:text="${book.getPublisher().getName()}"></td>
+        <td><img th:src="${book.getImage()}" /></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+<script src="/style/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

@@ -6,8 +6,32 @@
     <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css"/>
 </head>
 <body>
+<div th:replace="~{partial/header}"></div>
 <main>
-
+    <div class="container">
+        <div class="text-end mt-3">
+            <a href="/admin/author/add" class="btn btn-lg btn-success">Add new author</a>
+        </div>
+        <div class="mt-1">
+            <h1 class="display-2">All authors</h1>
+        </div>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="author: ${authors}">
+                        <td th:text="${author.getId()}"></td>
+                        <td th:text="${author.getNameCapitalized()}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </main>
 <script src="/style/bootstrap/js/bootstrap.js"></script>
 </body>

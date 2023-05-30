@@ -38,7 +38,7 @@ public class CategoryController {
             return "category/category_add";
         }
         try{
-            categoryService.add(name);
+            categoryService.add(name.trim().toLowerCase());
         }
         catch (Exception ex){
             ex.printStackTrace();

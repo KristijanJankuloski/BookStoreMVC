@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css"/>
 </head>
 <body>
-<div th:replace="partial/header"></div>
+<div th:replace="~{partial/header}"></div>
     <main>
         <div class="container">
             <div class="text-end mt-3">
-                <button class="btn btn-lg btn-primary">Add a category</button>
+                <a href="/admin/category/add" class="btn btn-lg btn-primary">Add a category</a>
             </div>
             <table class="table table-striped">
                 <thead>
@@ -21,8 +21,8 @@
                 </thead>
                 <tbody>
                     <tr th:each="category : ${categories}">
-                        <td th:text="${category.id}"></td>
-                        <td th:text="${category.name}"></td>
+                        <td th:text="${category.getId()}"></td>
+                        <td th:text="${category.getName()}"></td>
                     </tr>
                 </tbody>
             </table>
