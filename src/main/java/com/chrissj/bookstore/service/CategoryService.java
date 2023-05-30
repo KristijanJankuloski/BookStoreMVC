@@ -11,6 +11,7 @@ public interface CategoryService {
     List<Category> getAll();
     Category getById(int id) throws IOException;
     Category add(Category category);
+    Category add(String categoryName);
     void deleteById(int id) throws  IOException;
     Category update(int id, Category category) throws IOException;
 }

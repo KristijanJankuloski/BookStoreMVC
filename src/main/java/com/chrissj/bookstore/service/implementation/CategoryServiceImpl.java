@@ -34,6 +34,12 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Category add(String categoryName) {
+        Category category = new Category(categoryName.toLowerCase());
+        return categoryRepository.save(category);
+    }
+
+    @Override
     public void deleteById(int id) throws IOException {
         Category categoryToDelete = getById(id);
         categoryRepository.delete(categoryToDelete);

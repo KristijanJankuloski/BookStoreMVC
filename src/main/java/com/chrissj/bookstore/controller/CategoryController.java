@@ -24,22 +24,21 @@ public class CategoryController {
     public String categoryHome(Model model){
         List<Category> categories = categoryService.getAll();
         model.addAttribute("categories", categories);
-        return "category_home";
+        return "category/category_home";
     }
 
     @GetMapping("/add")
     public String addCategory(Model model){
-        return "category_add";
+        return "category/category_add";
     }
 
     @PostMapping("/add")
     public String add(@RequestParam(name = "name") String name){
         if(name.isBlank()){
-            return "category_add";
+            return "category/category_add";
         }
         try{
-            Category category = new Category(name);
-            categoryService.add(category);
+            categoryService.add(name);
         }
         catch (Exception ex){
             ex.printStackTrace();
