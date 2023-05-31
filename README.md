@@ -1,10 +1,10 @@
 # Book Store
-This book store project is an example of an MVC application to work as a functioning book store, with both roles for a regular user and admin. Using Spring Boot and Java with hibernate as the ORM using a repository pattern to separate data access from business logic.
+This book store project is an example of an MVC application to work as a functioning book store, with both roles for a regular user and an admin. Using Spring Boot and Java with hibernate as the ORM using a repository pattern to separate data access from business logic.
 
 ## Features
 - User Authentication using OAuth2 with managed roles.
 - Admin page for editing the contents
-- Responsive ui using bootstrap
+- Responsive UI using bootstrap
 
 
 ## Prerequisites

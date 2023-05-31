@@ -14,4 +14,5 @@ public interface CategoryService {
     Category add(String categoryName);
     void deleteById(int id) throws  IOException;
     Category update(int id, Category category) throws IOException;
+    Category update(int id, String name) throws IOException;
 }

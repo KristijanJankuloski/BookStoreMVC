@@ -51,4 +51,11 @@ public class CategoryServiceImpl implements CategoryService {
         categoryToUpdate.setName(category.getName());
         return categoryRepository.save(categoryToUpdate);
     }
+
+    @Override
+    public Category update(int id, String name) throws IOException {
+        Category categoryToUpdate = getById(id);
+        categoryToUpdate.setName(name);
+        return categoryRepository.save(categoryToUpdate);
+    }
 }

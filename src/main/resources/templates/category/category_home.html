@@ -17,12 +17,17 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="category : ${categories}">
                         <td th:text="${category.getId()}"></td>
                         <td th:text="${category.getName()}"></td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" th:href="@{'/admin/category/edit/' + ${category.getId()}}">Edit</a>
+                            <a class="btn btn-sm btn-danger" th:href="@{'/admin/category/delete/' + ${category.getId()}}">Delete</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
