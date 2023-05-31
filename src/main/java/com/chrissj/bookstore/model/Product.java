@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Entity
@@ -29,6 +30,7 @@ public class Product {
     @ManyToMany
     private List<Author> authors;
     private String imagePath;
+    private String imageType;
 
     public String getImagePath() {
         return imagePath;
@@ -92,6 +94,14 @@ public class Product {
         this.price = price;
     }
 
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
     @NonNull
     public Publisher getPublisher() {
         return publisher;
@@ -109,12 +119,12 @@ public class Product {
         this.authors = authors;
     }
 
-    public Resource getImage() throws IOException {
+    public String getImage() throws IOException {
         if (this.imagePath.isEmpty()){
             return null;
         }
-        Resource resource = new FileSystemResource(this.imagePath);
-        return resource;
-//        return Files.readAllBytes(new File(this.imagePath).toPath());
+        File image = new File(this.imagePath);
+        byte[] bytes = Files.readAllBytes(image.toPath());
+        return String.format("data:%s;base64,%s", this.imageType, Base64.getEncoder().encodeToString(bytes));
     }
 }

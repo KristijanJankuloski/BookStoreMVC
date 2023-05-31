@@ -50,6 +50,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = new Product(name, price, category, publisher, author);
         String filePath = this.FOLDER_PATH + image.getOriginalFilename();
         product.setImagePath(filePath);
+        product.setImageType(image.getContentType());
         try {
             image.transferTo(new File(filePath));
         } catch (IOException e) {
@@ -60,8 +61,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deleteById(int id) throws IOException {
-        Product pDelete = getById(id);
-        productRepository.delete(pDelete);
+        productRepository.deleteById(id);
     }
 
     @Override
@@ -73,5 +73,15 @@ public class ProductServiceImpl implements ProductService {
         pUpdate.setPrice(product.getPrice());
         pUpdate.setPublisher(product.getPublisher());
         return productRepository.save(pUpdate);
+    }
+
+    @Override
+    public Product updateImage(int id, MultipartFile image) throws IOException {
+        Product p = getById(id);
+        p.setImageType(image.getContentType());
+        String filePath = String.format("%s_%d%s", this.FOLDER_PATH, id, image.getOriginalFilename());
+        p.setImagePath(filePath);
+        image.transferTo(new File(filePath));
+        return productRepository.save(p);
     }
 }

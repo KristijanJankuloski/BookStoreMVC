@@ -19,4 +19,5 @@ public interface ProductService {
     Product add(String name, Float price, Category category, Publisher publisher, Author author, MultipartFile image);
     void deleteById(int id) throws IOException;
     Product update(int id, Product product) throws IOException;
+    Product updateImage(int id, MultipartFile image) throws IOException;
 }
