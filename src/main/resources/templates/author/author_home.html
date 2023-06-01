@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Authors</title>
     <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 <body>
 <div th:replace="~{partial/header}"></div>
@@ -21,12 +22,17 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="author: ${authors}">
                         <td th:text="${author.getId()}"></td>
                         <td th:text="${author.getNameCapitalized()}"></td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" th:href="@{'/admin/author/edit/' + ${author.getId()}}">Edit</a>
+                            <a class="btn btn-sm btn-danger" th:href="@{'/admin/author/delete/' + ${author.getId()}}">Edit</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

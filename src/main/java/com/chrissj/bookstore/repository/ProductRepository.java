@@ -18,4 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query("select  p from Product p join p.authors a where a.id = :authorId")
     List<Product> getAllByAuthorId(@Param("authorId") int authorId);
+    @Query("select count(p) from Product p join p.authors a where a.id = :authorId")
+    int CountWithAuthorId(@Param("authorId") int authorId);
 }

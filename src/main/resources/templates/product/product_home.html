@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Products</title>
   <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 <body>
 <div th:replace="~{partial/header}"></div>
@@ -11,6 +12,9 @@
   <div class="container">
     <div class="text-end mt-3">
       <a href="/admin/product/add" class="btn btn-lg btn-success">Add a product</a>
+    </div>
+    <div class="mt-1">
+      <h1 class="display-2">All products</h1>
     </div>
     <table class="table table-striped">
       <thead>
@@ -20,6 +24,7 @@
         <th>Price</th>
         <th>Author</th>
         <th>Publisher</th>
+        <th>Actions</th>
       </tr>
       </thead>
       <tbody>
@@ -29,7 +34,11 @@
         <td th:text="${book.getPrice()}"></td>
         <td th:text="${book.getAuthors().get(0).getNameCapitalized()}"></td>
         <td th:text="${book.getPublisher().getName()}"></td>
-        <td><img th:src="${book.getImage()}" /></td>
+        <td>
+          <a class="btn btn-sm btn-primary" th:href="@{'/admin/product/edit/' + ${book.getId()}}"><i class="bi bi-pencil-square"></i> Edit</a>
+          <a class="btn btn-sm btn-danger" th:href="@{'/admin/product/delete/' + ${book.getId()}}"><i class="bi bi-trash-fill"></i> Delete</a>
+        </td>
+<!--        <td><img class="img-fluid" th:src="${book.getImage()}" /></td>-->
       </tr>
       </tbody>
     </table>

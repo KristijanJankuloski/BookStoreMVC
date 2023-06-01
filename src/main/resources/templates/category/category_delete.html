@@ -9,14 +9,16 @@
 <div th:replace="~{partial/header}"></div>
 <main>
   <div class="container">
-      <div class="card">
+      <div class="card mt-3">
           <div class="card-header">
               <h2 class="card-title">Delete category</h2>
           </div>
           <div class="card-body">
               <form method="post">
-                  <label for="name" class="form-label">Name:</label>
-                  <input id="name" type="text" name="name" class="form-control" th:value="${category.getName()}" disabled />
+                  <div class="mb-3">
+                      <label for="name" class="form-label">Name:</label>
+                      <input id="name" type="text" name="name" class="form-control" th:value="${category.getName()}" disabled />
+                  </div>
                   <button type="submit" class="btn btn-danger">Delete category</button>
               </form>
           </div>

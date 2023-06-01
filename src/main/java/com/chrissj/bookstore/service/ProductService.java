@@ -20,4 +20,5 @@ public interface ProductService {
     void deleteById(int id) throws IOException;
     Product update(int id, Product product) throws IOException;
     Product updateImage(int id, MultipartFile image) throws IOException;
+    int countProductsWithAuthor(int authorId);
 }

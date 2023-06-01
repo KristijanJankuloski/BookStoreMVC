@@ -13,4 +13,5 @@ public interface AuthorService {
     Author getById(int id) throws IOException;
     void deleteById(int id) throws IOException;
     Author update(int id, Author author) throws IOException;
+    Author update(int id, String name) throws IOException;
 }

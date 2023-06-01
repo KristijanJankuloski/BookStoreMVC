@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Author</title>
+    <title>Edit Author</title>
   <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css"/>
 </head>
 <body>
@@ -11,15 +11,15 @@
   <div class="container">
     <div class="card mt-3">
       <div class="card-header">
-        <h2 class="card-title">Add new author</h2>
+        <h2 class="card-title">Edit author</h2>
       </div>
       <div class="card-body">
-        <form action="/admin/author/add" method="post">
+        <form method="post">
           <div class="mb-3">
             <label for="name" class="form-label">Authors full name</label>
-            <input id="name" name="name" class="form-control" />
+            <input id="name" name="name" class="form-control" th:value="${author.getFullName()}" required />
           </div>
-          <button type="submit" class="btn btn-success">Add author</button>
+          <button type="submit" class="btn btn-primary">Update author</button>
         </form>
       </div>
     </div>

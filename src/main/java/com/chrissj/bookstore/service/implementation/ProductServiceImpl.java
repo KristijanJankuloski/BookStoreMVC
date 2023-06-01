@@ -84,4 +84,9 @@ public class ProductServiceImpl implements ProductService {
         image.transferTo(new File(filePath));
         return productRepository.save(p);
     }
+
+    @Override
+    public int countProductsWithAuthor(int authorId) {
+        return productRepository.CountWithAuthorId(authorId);
+    }
 }

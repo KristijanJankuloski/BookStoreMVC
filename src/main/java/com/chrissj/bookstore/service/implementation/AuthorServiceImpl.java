@@ -44,4 +44,11 @@ public class AuthorServiceImpl implements AuthorService {
         aUpate.setFullName(author.getFullName());
         return authorRepository.save(aUpate);
     }
+
+    @Override
+    public Author update(int id, String name) throws IOException {
+        Author aUpdate = getById(id);
+        aUpdate.setFullName(name.trim().toLowerCase());
+        return authorRepository.save(aUpdate);
+    }
 }
