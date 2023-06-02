@@ -7,6 +7,7 @@ import com.chrissj.bookstore.model.Publisher;
 import com.chrissj.bookstore.model.exception.NoProductFoundException;
 import com.chrissj.bookstore.repository.ProductRepository;
 import com.chrissj.bookstore.service.ProductService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,7 +18,8 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
-    private final String FOLDER_PATH = "D:\\Projects\\Book_store\\upload\\products\\";
+    @Value("${project.images}")
+    private String FOLDER_PATH;
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
