@@ -23,8 +23,8 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeRequests(auth -> auth
-                        .requestMatchers("/", "/home", "/assets/**", "/signup/**").permitAll()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/home", "/assets/**", "/signup/**", "/style/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest()
                         .authenticated())
@@ -32,7 +32,7 @@ public class SecurityConfiguration {
                 .formLogin(form -> form
                         .loginPage("/login").permitAll()
                         .failureUrl("/login?error=BadCredentials")
-                        .defaultSuccessUrl("/"))
+                        .defaultSuccessUrl("/home"))
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .clearAuthentication(true)

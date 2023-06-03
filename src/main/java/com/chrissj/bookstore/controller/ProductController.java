@@ -68,7 +68,8 @@ public class ProductController {
             Category category = this.categoryService.getById(categoryId);
             Author author = this.authorService.getById(authorId);
             Publisher publisher = this.publisherService.getById(publisherId);
-            this.productService.add(name, price, category, publisher, author, image);
+            Product product = this.productService.add(name, price, category, publisher, author);
+            this.productService.updateImage(product.getId(), image);
         }
         catch (IOException ex){
             ex.printStackTrace();

@@ -1,4 +1,5 @@
-<header th:fragment="header" class="navbar navbar-expand-sm navbar-dark bg-dark">
+<header th:fragment="header" class="navbar navbar-expand-sm navbar-dark bg-dark"
+        xmlns:sec="http://www.w3.org/1999/xhtml">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Logo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -12,7 +13,7 @@
         <li class="nav-item">
           <a class="nav-link" href="">Browse</a>
         </li>
-        <li class="nav-item dropdown">
+        <li sec:authorize="isRole('ADMIN')" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Manage</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/admin/category">Categories</a></li>
@@ -22,8 +23,10 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
+      <div sec:authorize="isAnonymous()">
         <a class="me-2 btn btn-secondary" href="/login">Log in</a>
+      </div>
+      <form class="d-flex">
         <input class="form-control me-2" type="text" placeholder="Search">
         <button class="btn btn-primary" type="button">Search</button>
       </form>

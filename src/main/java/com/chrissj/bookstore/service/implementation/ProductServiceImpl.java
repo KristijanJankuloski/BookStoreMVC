@@ -81,7 +81,7 @@ public class ProductServiceImpl implements ProductService {
     public Product updateImage(int id, MultipartFile image) throws IOException {
         Product p = getById(id);
         p.setImageType(image.getContentType());
-        String filePath = String.format("%s_%d%s", this.FOLDER_PATH, id, image.getOriginalFilename());
+        String filePath = String.format("%s%d_%s", this.FOLDER_PATH, id, p.getName());
         p.setImagePath(filePath);
         image.transferTo(new File(filePath));
         return productRepository.save(p);
