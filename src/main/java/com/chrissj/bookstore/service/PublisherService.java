@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.List;
 
-@Service
 public interface PublisherService {
     List<Publisher> getAll();
     Publisher getById(int id) throws IOException;
