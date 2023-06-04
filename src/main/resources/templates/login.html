@@ -6,34 +6,40 @@
     <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css" />
 </head>
 <body>
-<main>
-    <div class="container h-100 mt-5">
-        <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Error!</strong> Username or password is incorrect.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <h2 class="display-4">Login</h2>
+<main class="container h-100 mt-5">
+    <div class="row">
+        <div class="col-lg">
+            <div class="">
+                <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong> Username or password is incorrect.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="display-4">Login</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/login">
+                            <div class="mb-3 p-1">
+                                <label for="username" class="form-label">Username:</label>
+                                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required />
+                            </div>
+                            <div class="mb-3 p-1">
+                                <label for="password" class="form-label">Password:</label>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="******" required />
+                            </div>
+                            <div class="mb-3 p-1">
+                                <button type="submit" value="Log in" class="btn btn-success">Login</button>
+                                <a class="btn btn-outline-primary" href="/signup">Sing up here</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <form method="post" action="/login">
-                    <div class="mb-3 p-1">
-                        <label for="username" class="form-label">Username:</label>
-                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required />
-                    </div>
-                    <div class="mb-3 p-1">
-                        <label for="password" class="form-label">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="******" required />
-                    </div>
-                    <div class="mb-3 p-1">
-                        <button type="submit" value="Log in" class="btn btn-success">Login</button>
-                        <a class="btn btn-outline-primary" href="/signup">Sing up here</a>
-                    </div>
-                </form>
-            </div>
         </div>
+        <div class="col-lg"></div>
     </div>
+
 </main>
 <script src="/style/bootstrap/js/bootstrap.js"></script>
 </body>
