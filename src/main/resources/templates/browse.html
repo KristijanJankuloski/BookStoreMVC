@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse</title>
+  <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css"/>
+</head>
+<body>
+<div th:replace="~{partial/header}"></div>
+<main>
+  <div class="container mt-5">
+    <div class="card-container row-cols-lg-5">
+      <div th:each="product : ${products}" class="card">
+          <div class="card-header">
+              <div class="card-img card-img-top">
+                  <img th:src="${product.getImage()}" class="img-fluid" />
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title" th:text="${product.getName()}"></h5>
+                  <p class="card-text" th:each="author : ${product.getAuthors()}" th:text="${author.getNameCapitalized()}"></p>
+                  <p class="card-text">Publisher: <span th:text="${product.getPublisher().getName()}"></span></p>
+                  <p class="card-text">$<span th:text="${product.getPrice().toString()}"></span></p>
+              </div>
+              <div class="card-footer d-flex justify-content-between">
+                  <a class="btn btn-sm btn-success" href="#">Add to cart</a>
+                  <a class="btn btn-sm btn-primary" th:href="@{'/details/' + ${product.getId()}}">Read more</a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="/style/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>

@@ -13,6 +13,14 @@
     <div class="text-end mt-3">
       <a href="/admin/product/add" class="btn btn-lg btn-success">Add a product</a>
     </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Error!</strong> <span th:text="${error}"></span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> Product added successfully.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <div class="mt-1">
       <h1 class="display-2">All products</h1>
     </div>

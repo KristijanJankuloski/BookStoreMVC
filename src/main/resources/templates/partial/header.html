@@ -11,20 +11,25 @@
           <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Browse</a>
+          <a class="nav-link" href="/browse">Browse</a>
         </li>
-        <li sec:authorize="isRole('ADMIN')" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Manage</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/admin/category">Categories</a></li>
-            <li><a class="dropdown-item" href="/admin/author">Authors</a></li>
-            <li><a class="dropdown-item" href="/admin/publisher">Publishers</a></li>
-            <li><a class="dropdown-item" href="/admin/product">Products</a></li>
-          </ul>
-        </li>
+        <div sec:authorize="isAuthenticated()">
+          <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Manage</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/admin/category">Categories</a></li>
+              <li><a class="dropdown-item" href="/admin/author">Authors</a></li>
+              <li><a class="dropdown-item" href="/admin/publisher">Publishers</a></li>
+              <li><a class="dropdown-item" href="/admin/product">Products</a></li>
+            </ul>
+          </li>
+        </div>
       </ul>
       <div sec:authorize="isAnonymous()">
         <a class="me-2 btn btn-secondary" href="/login">Log in</a>
+      </div>
+      <div sec:authorize="isAuthenticated()">
+        <a class="me-2 btn btn-secondary" href="/logout">Log out</a>
       </div>
       <form class="d-flex">
         <input class="form-control me-2" type="text" placeholder="Search">

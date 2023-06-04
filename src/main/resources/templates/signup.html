@@ -6,10 +6,14 @@
     <link rel="stylesheet" href="/style/bootstrap/css/bootstrap.css" />
 </head>
 <body>
-<main>
-    <div class="container mt-5">
+<main class="container mt-5">
+    <div class="row-cols-lg-2">
         <div class="card">
             <div class="card-header">
+                <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong> <span th:text="${error}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 <h2 class="display-4">Sign Up</h2>
             </div>
             <div class="card-body">

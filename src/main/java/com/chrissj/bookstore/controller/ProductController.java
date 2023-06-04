@@ -16,12 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -40,8 +35,10 @@ public class ProductController {
     }
 
     @GetMapping
-    public String getProduct(Model model){
+    public String getProduct(@RequestParam(required = false) String error, @RequestParam(required = false) String success, Model model){
         List<Product> products = this.productService.getAll();
+        model.addAttribute("error", error);
+        model.addAttribute("success", success);
         model.addAttribute("products", products);
         return "product/product_home";
     }
@@ -73,7 +70,8 @@ public class ProductController {
         }
         catch (IOException ex){
             ex.printStackTrace();
+            return "redirect:/admin/product?error=" + ex.getLocalizedMessage();
         }
-        return "redirect:/admin/product";
+        return "redirect:/admin/product?success=ProductAdded";
     }
 }
