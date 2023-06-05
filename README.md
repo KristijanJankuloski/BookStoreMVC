@@ -27,6 +27,7 @@ Update `application.properties`:
 - `spring.datasource.url=` your connection string.
 - `spring.datasource.username=` your username.
 - `spring.datasource.password=` your password.
+- `project.images=` Path where images will be uploaded
 
 ## Project structure
 - `model`: Defines all domain models for the application.
