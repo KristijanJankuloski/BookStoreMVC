@@ -13,6 +13,7 @@ import java.util.List;
 public interface ProductService {
     List<Product> getAll();
     Product getById(int id) throws IOException;
+    List<Product> getByCategoryId(int categoryId) throws IOException;
     Product add(Product product);
     Product add(String name, Float price, Category category, String description, Publisher publisher, Author author);
     Product add(String name, Float price, Category category, String description, Publisher publisher, Author author, MultipartFile image);

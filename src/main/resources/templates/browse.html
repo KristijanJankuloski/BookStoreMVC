@@ -7,20 +7,20 @@
 </head>
 <body>
 <div th:replace="~{partial/header}"></div>
-<main>
+<main class="container-fluid">
     <div class="row">
-        <div class="col-lg-1 mt-5 ps-lg-3">
+        <div class="col-lg-2 mt-5 p-lg-4">
             <div>
-                <h4>Categories:</h4>
+                <h4 class="">Categories:</h4>
             </div>
             <div class="list-group">
-                <a th:each="category: ${categories}" th:text="${category.getName()}" th:href="@{'/browse/' + ${category.getId()}}" class="list-group-item list-group-item-action">The current button</a>
+                <a th:each="category: ${categories}" th:text="${category.getName()}" th:href="@{'/browse/' + ${category.getId()}}" th:class="'list-group-item list-group-item-action ' + ${currentCategory==category.getId() ? 'active' : ''}">The current button</a>
             </div>
         </div>
         <div class="col-lg">
-            <div class="container mt-5">
+            <div class="mt-5">
                 <div class="mb-3">
-                    <h2>Books</h2>
+                    <h2 class="display-4">Books</h2>
                 </div>
                 <div class="card-container row-cols-lg-5">
                     <div th:each="product : ${products}" class="card">
@@ -35,7 +35,7 @@
                                 <p class="card-text">$<span th:text="${product.getPrice().toString()}"></span></p>
                             </div>
                             <div class="card-footer d-flex justify-content-between">
-                                <a class="btn btn-sm btn-success" href="#">Add to cart</a>
+                                <button class="btn btn-sm btn-success btn-add-to-cart" th:id="@{'productid-' + ${product.getId()}}">Add to cart</button>
                                 <a class="btn btn-sm btn-primary" th:href="@{'/details/' + ${product.getId()}}">Read more</a>
                             </div>
                         </div>
@@ -46,5 +46,6 @@
     </div>
 </main>
 <script src="/style/bootstrap/js/bootstrap.js"></script>
+<script src="/js/browseAddToCart.js"></script>
 </body>
 </html>

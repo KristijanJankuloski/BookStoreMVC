@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -32,7 +33,17 @@ public class BrowseController {
         return "browse";
     }
     @GetMapping("/{category}")
-    public String getBrowseCategory(@PathVariable String category){
+    public String getBrowseCategory(@PathVariable int category, Model model){
+        try{
+            List<Product> products = productService.getByCategoryId(category);
+            List<Category> categories = categoryService.getAll();
+            model.addAttribute("categories", categories);
+            model.addAttribute("products", products);
+            model.addAttribute("currentCategory", category);
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+        }
         return "browse";
     }
 }

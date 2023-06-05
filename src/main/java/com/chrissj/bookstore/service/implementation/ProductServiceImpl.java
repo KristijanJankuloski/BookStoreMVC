@@ -37,6 +37,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getByCategoryId(int categoryId) throws IOException {
+        return productRepository.getAllByCategoryId(categoryId);
+    }
+
+    @Override
     public Product add(Product product) {
         return productRepository.save(product);
     }
