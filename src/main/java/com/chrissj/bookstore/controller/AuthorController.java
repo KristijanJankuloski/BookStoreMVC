@@ -39,7 +39,7 @@ public class AuthorController {
             return "author/author_add";
         }
         try{
-            authorService.add(name.trim().toLowerCase());
+            authorService.add(name.trim());
         }catch (Exception ex){
             ex.printStackTrace();
         }

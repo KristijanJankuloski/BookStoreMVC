@@ -24,7 +24,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author add(String name) {
-        return authorRepository.save(new Author(name));
+        return authorRepository.save(new Author(name.trim()));
     }
 
     @Override
@@ -48,7 +48,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Author update(int id, String name) throws IOException {
         Author aUpdate = getById(id);
-        aUpdate.setFullName(name.trim().toLowerCase());
+        aUpdate.setFullName(name.trim());
         return authorRepository.save(aUpdate);
     }
 }

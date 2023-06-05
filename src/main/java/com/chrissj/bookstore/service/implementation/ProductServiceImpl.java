@@ -42,14 +42,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product add(String name, Float price, Category category, Publisher publisher, Author author) {
-        Product product = new Product(name, price, category, publisher, author);
+    public Product add(String name, Float price, Category category, String description, Publisher publisher, Author author) {
+        Product product = new Product(name, price, category, description, publisher, author);
         return productRepository.save(product);
     }
 
     @Override
-    public Product add(String name, Float price, Category category, Publisher publisher, Author author, MultipartFile image) {
-        Product product = new Product(name, price, category, publisher, author);
+    public Product add(String name, Float price, Category category, String description, Publisher publisher, Author author, MultipartFile image) {
+        Product product = new Product(name, price, category, description, publisher, author);
         String filePath = this.FOLDER_PATH + image.getOriginalFilename();
         product.setImagePath(filePath);
         product.setImageType(image.getContentType());
@@ -72,6 +72,7 @@ public class ProductServiceImpl implements ProductService {
         pUpdate.setName(product.getName());
         pUpdate.setAuthors(product.getAuthors());
         pUpdate.setCategory(product.getCategory());
+        pUpdate.setDescription(product.getDescription());
         pUpdate.setPrice(product.getPrice());
         pUpdate.setPublisher(product.getPublisher());
         return productRepository.save(pUpdate);

@@ -14,8 +14,8 @@ public interface ProductService {
     List<Product> getAll();
     Product getById(int id) throws IOException;
     Product add(Product product);
-    Product add(String name, Float price, Category category, Publisher publisher, Author author);
-    Product add(String name, Float price, Category category, Publisher publisher, Author author, MultipartFile image);
+    Product add(String name, Float price, Category category, String description, Publisher publisher, Author author);
+    Product add(String name, Float price, Category category, String description, Publisher publisher, Author author, MultipartFile image);
     void deleteById(int id) throws IOException;
     Product update(int id, Product product) throws IOException;
     Product updateImage(int id, MultipartFile image) throws IOException;

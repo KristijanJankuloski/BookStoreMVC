@@ -25,6 +25,10 @@
                 <label for="price" class="form-label">Price</label>
                 <input id="price" name="price" class="form-control" type="number" required/>
               </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+              </div>
             </div>
             <div class="col">
               <div class="mb-3">
@@ -34,13 +38,13 @@
                 </select>
               </div>
               <div class="mb-3">
-                <label for="author" class="form-label">Category</label>
+                <label for="author" class="form-label">Author</label>
                 <select id="author" name="author" class="form-select" required>
                   <option th:each="author : ${authors}" th:value="${author.getId()}" th:text="${author.getFullName()}"></option>
                 </select>
               </div>
               <div class="mb-3">
-                <label for="publisher" class="form-label">Category</label>
+                <label for="publisher" class="form-label">Publisher</label>
                 <select id="publisher" name="publisher" class="form-select" required>
                   <option th:each="publisher : ${publishers}" th:value="${publisher.getId()}" th:text="${publisher.getName()}"></option>
                 </select>

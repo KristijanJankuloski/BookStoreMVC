@@ -28,6 +28,16 @@ public class Product {
     @NonNull
     @ManyToOne
     private Publisher publisher;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @ManyToMany
     private List<Author> authors;
     private String imagePath;
@@ -41,14 +51,14 @@ public class Product {
         this.imagePath = imagePath;
     }
 
-    public Product(@NonNull String name, @NonNull Float price, Category category, @NonNull Publisher publisher, List<Author> authors) {
+    public Product(@NonNull String name, @NonNull Float price, Category category, String description, @NonNull Publisher publisher, List<Author> authors) {
         this.name = name;
         this.price = price;
         this.category = category;
         this.publisher = publisher;
         this.authors = authors;
     }
-    public Product(@NonNull String name, @NonNull Float price, @NonNull Category category, @NonNull Publisher publisher, Author author){
+    public Product(@NonNull String name, @NonNull Float price, @NonNull Category category, String description, @NonNull Publisher publisher, Author author){
         this.name = name;
         this.price = price;
         this.category = category;

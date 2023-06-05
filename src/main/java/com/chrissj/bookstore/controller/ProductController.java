@@ -58,6 +58,7 @@ public class ProductController {
     public String addProductPost(@RequestParam(name = "name") String name,
                                  @RequestParam(name = "price") Float price,
                                  @RequestParam(name = "category") int categoryId,
+                                 @RequestParam(name = "description") String description,
                                  @RequestParam(name = "author") int authorId,
                                  @RequestParam(name = "publisher") int publisherId,
                                  @RequestParam(name = "image") MultipartFile image){
@@ -65,7 +66,7 @@ public class ProductController {
             Category category = this.categoryService.getById(categoryId);
             Author author = this.authorService.getById(authorId);
             Publisher publisher = this.publisherService.getById(publisherId);
-            Product product = this.productService.add(name, price, category, publisher, author);
+            Product product = this.productService.add(name, price, category, description, publisher, author);
             this.productService.updateImage(product.getId(), image);
         }
         catch (IOException ex){
