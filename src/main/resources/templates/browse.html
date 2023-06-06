@@ -35,7 +35,9 @@
                                 <p class="card-text">$<span th:text="${product.getPrice().toString()}"></span></p>
                             </div>
                             <div class="card-footer d-flex justify-content-between">
-                                <button class="btn btn-sm btn-success btn-add-to-cart" th:id="@{'productid-' + ${product.getId()}}">Add to cart</button>
+                                <form th:action="@{'/shoppingCart/add' + ${product.getId()}}" method="post">
+                                    <button type="submit" class="btn btn-sm btn-success btn-add-to-cart" th:id="@{'productid-' + ${product.getId()}}">Add to cart</button>
+                                </form>
                                 <a class="btn btn-sm btn-primary" th:href="@{'/details/' + ${product.getId()}}">Read more</a>
                             </div>
                         </div>

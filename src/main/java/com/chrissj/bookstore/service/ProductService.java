@@ -4,7 +4,6 @@ import com.chrissj.bookstore.model.Author;
 import com.chrissj.bookstore.model.Category;
 import com.chrissj.bookstore.model.Product;
 import com.chrissj.bookstore.model.Publisher;
-import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -14,6 +13,7 @@ public interface ProductService {
     List<Product> getAll();
     Product getById(int id) throws IOException;
     List<Product> getByCategoryId(int categoryId) throws IOException;
+    List<Product> findByKeyword(String keyword);
     Product add(Product product);
     Product add(String name, Float price, Category category, String description, Publisher publisher, Author author);
     Product add(String name, Float price, Category category, String description, Publisher publisher, Author author, MultipartFile image);

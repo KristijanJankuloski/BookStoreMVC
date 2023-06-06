@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
+    @Query("select p from Product p join Author a join Category c where concat(p.name, p.description, a.fullName, c.name) like '%:keyowrd%'")
+    List<Product> findByKeyword(@Param("keyword") String keyword);
     @Query("select p from Product p where p.category.id = :categoryId")
     List<Product> getAllByCategoryId(@Param("categoryId") int categoryId);
 

@@ -48,7 +48,7 @@ public class AuthServiceImpl implements AuthService {
         user.setPassword(passwordEncoder.encode(password));
         Role userRole = this.roleRepository.findByName("ROLE_USER");
         user.setRoles(Collections.singletonList(userRole));
-        return this.userService.registerUer(user);
+        return this.userService.registerUser(user);
     }
 
     @PostConstruct

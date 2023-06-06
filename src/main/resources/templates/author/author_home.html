@@ -30,8 +30,8 @@
                         <td th:text="${author.getId()}"></td>
                         <td th:text="${author.getNameCapitalized()}"></td>
                         <td>
-                            <a class="btn btn-sm btn-primary" th:href="@{'/admin/author/edit/' + ${author.getId()}}">Edit</a>
-                            <a class="btn btn-sm btn-danger" th:href="@{'/admin/author/delete/' + ${author.getId()}}">Edit</a>
+                            <a class="btn btn-sm btn-primary" th:href="@{'/admin/author/edit/' + ${author.getId()}}"><i class="bi bi-pencil-square"></i> Edit</a>
+                            <a class="btn btn-sm btn-danger" th:href="@{'/admin/author/delete/' + ${author.getId()}}"><i class="bi bi-trash-fill"></i> Delete</a>
                         </td>
                     </tr>
                 </tbody>
